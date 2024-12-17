@@ -1,0 +1,133 @@
+<!-- <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visit Counter</h1>
+    <p>You have visited this page <span id="visitCount">0</span> times.</p>
+
+    <script>
+        // Get the current visit count from local storage, or start with 0
+        let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) : 0;
+
+        // Increment the visit count
+        visitCount++;
+
+        // Store the updated visit count back to local storage
+        localStorage.setItem('visitCount', visitCount);
+
+        // Update the displayed visit count on the webpage
+        document.getElementById('visitCount').textContent = visitCount;
+    </script>
+</body>
+</html> -->
+  
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visit Counter</h1>
+    <p>You have visited this page <span id="visitCount">0</span> times.</p>
+    <button id="resetButton">Reset Counter</button>
+
+    <script>
+        // Function to update visit count
+        function updateVisitCount() {
+            let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) : 0;
+            visitCount++;
+            localStorage.setItem('visitCount', visitCount);
+            document.getElementById('visitCount').textContent = visitCount;
+        }
+
+        // Function to reset the visit count
+        function resetVisitCount() {
+            localStorage.removeItem('visitCount');
+            document.getElementById('visitCount').textContent = 0;
+        }
+
+        // Initialize visit count on page load
+        updateVisitCount();
+
+        // Add event listener to the reset button
+        document.getElementById('resetButton').addEventListener('click', resetVisitCount);
+    </script>
+</body>
+</html> --> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visit Counter</h1>
+    <p>You have visited this page <span id="visitCount">0</span> times.</p>
+    <button id="resetButton">Reset Counter</button>
+
+    <script>
+        // Function to update visit count
+        function updateVisitCount() {
+            let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) : 0;
+            const lastVisit = localStorage.getItem('lastVisit');
+
+            const now = new Date().getTime();
+            // Check if the last visit was more than 10 seconds ago (10000 ms)
+            if (!lastVisit || now - lastVisit > 5000) {
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                localStorage.setItem('lastVisit', now);
+                document.getElementById('visitCount').textContent = visitCount;
+            } else {
+                // Update displayed count without incrementing
+                document.getElementById('visitCount').textContent = visitCount;
+            }
+        }
+
+        // Function to reset the visit count
+        function resetVisit() {
+            localStorage.removeItem('visitCount');
+            localStorage.removeItem('lastVisit');
+            document.getElementById('visitCount').textContent = 0;
+        }
+
+        // Initialize visit count on page load
+        updateVisitCount();
+        document.getElementById('resetButton').addEventListener('click', resetVisit);
+        // Optionally, reset the visit count using a timeout (uncomment if needed)
+        // setTimeout(resetVisitCount, 30000); // Resets after 30 seconds
+    </script>
+</body>
+</html>

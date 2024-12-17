@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <!-- <link rel="icon" href="./src/assets/logo.png"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+<div class="Stack" style="margin-left: 20px;">
+    <br>
+    <br>
+    <h1>Stack</h1>
+    <p>A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle. It behaves like a stack of plates, where the last plate added is the first one to be removed.
+    </p><p>
+       <b><h4>Think of it this way:</h4></b> 
+        <pre>
+        Pushing an element onto the stack is like adding a new plate on top.
+        Popping an element removes the top plate from the stack.
+        </pre>
+        <b><h4>Key Operations on Stack Data Structures</h4></b>
+        <pre>
+        Push: Adds an element to the top of the stack.
+        Pop: Removes the top element from the stack.
+        Peek: Returns the top element without removing it.
+        IsEmpty: Checks if the stack is empty.
+        IsFull: Checks if the stack is full (in case of fixed-size arrays).
+        </pre>
+        <b><h4>Applications of Stack Data Structures</h4></b>
+        Recursion
+        Expression Evaluation and Parsing
+        Depth-First Search (DFS)
+        Undo/Redo Operations
+        Browser History
+        Function Calls
+    </p>
+    <br>
+    <br>
+    <div class="box1">
+        <div class="Process">
+            <h1>How Stacks Work?</h1>
+            <p>Elements can be added to and removed from the stack using two primary operations:</p>
+            <ul>
+                <li><strong>Push:</strong> Adds an item to the top of the stack.</li>
+                <li><strong>Pop:</strong> Removes the item from the top of the stack.</li>
+            </ul>
+            <p>Here's a simple visualization:</p>
+            <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg" alt="Stack Example">
+            <p>In the example above, if we perform a push operation on the stack, the new element will be placed on top, and if we perform a pop operation, the top element will be removed.</p>
+
+            <button style="background-color: blue;" class="button1" onclick="location.href='Animations/Stack/stack.html'">Try It!</button>
+            
+
+              </div>
+        
+        <div class="code">
+            <h1>Implementation in C</h1>
+            <pre class="prettyprint notranslate prettyprinted" >
+#include < stdio.h >
+#include < stdlib.h >
+
+#define MAX 10
+
+struct Stack {
+    int items[MAX];
+    int top;
+};
+
+// Function to create a stack
+struct Stack* createStack() {
+    struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));
+    stack->top = -1;
+    return stack;
+}
+
+// Function to check if the stack is full
+int isFull(struct Stack* stack) {
+    return stack->top == MAX - 1;
+}
+
+// Function to check if the stack is empty
+int isEmpty(struct Stack* stack) {
+    return stack->top == -1;
+}
+
+// Function to add an item to the stack
+void push(struct Stack* stack, int item) {
+    if (isFull(stack)) {
+        printf("Stack overflow\n");
+        return;
+    }
+    stack->items[++stack->top] = item;
+    printf("%d pushed to stack\n", item);
+}
+
+// Function to remove an item from the stack
+int pop(struct Stack* stack) {
+    if (isEmpty(stack)) {
+        printf("Stack underflow\n");
+        return -1;
+    }
+    return stack->items[stack->top--];
+}
+
+// Function to display the stack
+void display(struct Stack* stack) {
+    if (isEmpty(stack)) {
+        printf("Stack is empty\n");
+        return;
+    }
+    printf("Stack elements are: ");
+    for (int i = 0; i <= stack->top; i++) {
+        printf("%d ", stack->items[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Stack* stack = createStack();
+    push(stack, 10);
+    push(stack, 20);
+    push(stack, 30);
+    display(stack);
+    printf("%d popped from stack\n", pop(stack));
+    display(stack);
+    return 0;
+}
+            </pre>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="main-content" >
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                   through interactive quizzes and engaging learning tools.<br>
+                   At DATAVISIQ, we combine education with gamification to 
+                   help you master foundational concepts.Our interactive quizzes
+                   are crafted to challenge your understanding, reinforce key ideas,
+                    and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <center>
+        <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+    </center>
+</div>
+</footer>
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+</body>
+</html>

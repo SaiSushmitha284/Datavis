@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARRAYLINKEDLIST</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <link rel="icon" href="./src/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="no-scroll-preload">
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+<div class="Stack" style="margin-left: 20px;">
+    <br>
+    <br>
+    <h1>ARRAY</h1>
+    <p>An array is a type of linear data structure that is defined as a collection of elements with same or different data types. <br> 
+        They exist in both single dimension and multiple dimensions.<br>  
+        These data structures come into picture when there is a necessity to store multiple elements of similar nature together at one place.
+    </p>
+    <p>
+        The difference between an array index and a memory address is that 
+        the array index acts like a key value to label the elements in the array.<br> 
+        However, a memory address is the starting address of free memory available.<br>
+        <b>Following are the important terms to understand the concept of Array.</b><br>
+        Element − Each item stored in an array is called an element.<br>
+        Index − Each location of an element in an array has a numerical index, which is used to identify the element.
+    </p>
+    <p>Here's a simple visualization:</p>
+    <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/array_representation.jpg" alt="Stack Example">
+    
+    <br>
+    <br>
+    <h1>LINKED LIST</h1>
+    <p>A linked list is a linear data structure which can store a collection of "nodes" connected together via links i.e. pointers.<br> 
+         Linked lists nodes are not stored at a contiguous location, rather they are linked using pointers to the different memory locations.<br> 
+         A node consists of the data value and a pointer to the address of the next node within the linked list.<br> 
+         A linked list is a dynamic linear data structure whose memory size can be allocated or de-allocated at run time based on the operation insertion or deletion,<br> 
+        this helps in using system memory efficiently.<br> 
+        Linked lists can be used to implment various data structures like a stack, queue, graph, hash maps, etc.<br> 
+        A linked list starts with a head node which points to the first node.<br> 
+         Every node consists of data which holds the actual data (value) associated with the node and a next pointer which holds the memory address of the next node in the linked list.<br> 
+         The last node is called the tail node in the list which points to null indicating the end of the list.<br> 
+    </p>
+    
+    <p>Here's a simple visualization:</p>
+    <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/singly_linked_lists.jpg" alt="Stack Example">
+    
+    </div>
+</div>
+<button style="background-color: blue;" class="button1" onclick="location.href='Representation/vis_data.html'">Try It!</button>
+            
+
+<footer>
+    <div class="main-content" >
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                   through interactive quizzes and engaging learning tools.<br>
+                   At DATAVISIQ, we combine education with gamification to 
+                   help you master foundational concepts.Our interactive quizzes
+                   are crafted to challenge your understanding, reinforce key ideas,
+                    and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <center>
+        <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+    </center>
+</div>
+</footer>
+
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+</body>
+</html>

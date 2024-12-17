@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Searching</title>
+        <link rel="stylesheet" href="src/search/css/style.css" />
+        <link rel="stylesheet" href="src/home/css/style.css" />
+        <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+               <!-- Page icon -->
+        <link rel="icon" href="./src/assets/favicon.png">
+		<!-- style for the top more button -->
+		<link rel="stylesheet" href="src/home/css/morebutton.css" />
+        <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+		<!-- style for the top more button -->
+		<link rel="stylesheet" href="src/home/css/morebutton.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+        
+    </head>
+    <body>
+        <header>
+            <div id="header-inner">
+                <a href="#" id="logo"></a>
+                <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                    <img src="src/assets/datavisiq.png" class="main-logo">
+                    <span class="name">DataVisIQ</span>
+                </a>
+                <div class="container1 blue" id="navbarNav">
+                    <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                    <ul class="heck" id="heck">
+                        <a href="cover.html" class="link">Home</a>
+                        <a href="datastructure.html" class="link">Data Structures</a>
+                        <a href="quiz.html" class="link">Quiz</a>
+                        <a href="#section1" class="link">About Us</a>
+                        <div class="dropdown">
+                            <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                            <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div id="array_container"></div>
+        </section>
+
+        <section>
+            <div id="array_container2">
+                <input id="texty" type="text" placeholder="Enter number" />
+               <button class="custom button" id="b1"  onclick="search(1)">Linear Search</button>
+                <button class="custom button" id="b2" onclick="search(2)">Binary Search</button>
+                <div id="resultDiv">
+                    <p id="result"></p>
+                </div>
+            </div>
+           
+        </section>
+
+           <!-- Footer -->
+           <footer>
+            <div class="main-content">
+                <div class="left box">
+                    <h2>About Us</h2>
+                    <div class="content">
+                        <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                        through interactive quizzes and engaging learning tools.<br>
+                        At DATAVISIQ, we combine education with gamification to 
+                        help you master foundational concepts.Our interactive quizzes
+                        are crafted to challenge your understanding, reinforce key ideas,
+                        and ensure you’re ready to tackle.
+                        </p>
+    
+                        <div class="links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-medium-m"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="address box">
+                    <h2>Address</h2>
+                    <div class="content">
+                        <div class="place">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="text">Hyderabad,Telangana</span>
+                        </div>
+                        <div class="email">
+                            <i class="fas fa-envelope"></i>
+                            <span class="email">datavisiq.int@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right box">
+                    <h2>Contact Us</h2>
+                    <form action="#">
+                        <div class="email">
+                            <div class="text">Email</div>
+                            <input type="email" required>
+                        </div>
+                        <div class="msg">
+                            <div class="text">Message</div>
+                            <textarea name="" id="" cols="25" rows="2" required></textarea>
+                        </div>
+                        <div class="btn">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <center>
+                    <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+                </center>
+            </div>
+        </footer>
+           
+        <script src="src/search/js/index.js"></script>
+        <script src="src/home/js/script.js"></script>  
+        <script src="src/search/js/linearSearch.js"></script>
+        <script src="src/search/js/binarySearch.js"></script>
+		<script src="src/home/js/morebutton.js"></script>
+    </body>
+</html>

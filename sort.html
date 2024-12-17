@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sorting</title>
+         <!-- Page icon -->
+         <link rel="icon" href="./src/assets/favicon.png">
+         <link rel="stylesheet" href="src/home/css/style.css" />
+         <link rel="stylesheet" href="src/search/css/style.css" />
+         <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+        <link rel="stylesheet" href="src/sort/css/style.css" />
+		<link rel="stylesheet" href="src/home/css/morebutton.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div id="header-inner">
+                <a href="#" id="logo"></a>
+                <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                    <img src="src/assets/datavisiq.png" class="main-logo">
+                    <span class="name">DataVisIQ</span>
+                </a>
+                <div class="container1 blue" id="navbarNav">
+                    <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                    <ul class="heck" id="heck">
+                        <a href="cover.html" class="link">Home</a>
+                        <a href="datastructure.html" class="link">Data Structures</a>
+                        <a href="quiz.html" class="link">Quiz</a>
+                        <a href="#section1" class="link">About Us</a>
+                        <div class="dropdown">
+                            <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                            <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </header>
+          
+        
+            <div id="array_container"></div>
+        
+<br><br><br><br><br><br>
+        <section>
+            <div id="array_container2">
+                <button class="b1" onclick="sorting(1)">Bubble Sort</button>
+                <button class="b1" onclick="sorting(2)">Insertion Sort</button>
+                <button class="b1" onclick="sorting(3)">Selection Sort</button>
+                <button class="b1" onclick="sorting(4)">Merge Sort</button>
+                <button class="b1" onclick="sorting(5)">Quick Sort</button>
+                <button class="b1" onclick="sorting(6)">Heap Sort</button>
+            </div>
+        </section>
+    
+        <section>
+            <div id="array_container3">
+                <label for="values">Number of values:</label>
+                <select name="values" id="values" onchange="changeN()">
+                    <option value="10" >10</option>
+                    <option value="20">20</option>
+                    <option value="50" selected>50</option>
+                    <option value="100">100</option>
+                </select>
+                <label for="speed">Speed:</label>
+                <select name="speed" id="speed" onchange="changeSpeed()">
+                    <option value="8">0.5x</option>
+                    <option value="4" selected>1x</option>
+                    <option value="3">1.5x</option>
+                    <option value="2">2x</option>
+                    <option value="1">4x</option>
+                </select>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="main-content">
+                <div class="left box">
+                    <h2>About Us</h2>
+                    <div class="content">
+                        <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                        through interactive quizzes and engaging learning tools.<br>
+                        At DATAVISIQ, we combine education with gamification to 
+                        help you master foundational concepts.Our interactive quizzes
+                        are crafted to challenge your understanding, reinforce key ideas,
+                        and ensure you’re ready to tackle.
+                        </p>
+    
+                        <div class="links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-medium-m"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="address box">
+                    <h2>Address</h2>
+                    <div class="content">
+                        <div class="place">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="text">Hyderabad,Telangana</span>
+                        </div>
+                        <div class="email">
+                            <i class="fas fa-envelope"></i>
+                            <span class="email">datavisiq.int@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right box">
+                    <h2>Contact Us</h2>
+                    <form action="#">
+                        <div class="email">
+                            <div class="text">Email</div>
+                            <input type="email" required>
+                        </div>
+                        <div class="msg">
+                            <div class="text">Message</div>
+                            <textarea name="" id="" cols="25" rows="2" required></textarea>
+                        </div>
+                        <div class="btn">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <center>
+                    <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+                </center>
+            </div>
+        </footer>
+   
+        <script src="src/sort/js/index.js"></script>
+        <script src="src/sort/js/heapSort.js"></script>
+        <script src="src/sort/js/selectionSort.js"></script>
+        <script src="src/sort/js/insertionSort.js"></script>
+        <script src="src/sort/js/mergeSort.js"></script>
+        <script src="src/sort/js/quickSort.js"></script>
+        <script src="src/sort/js/bubbleSort.js"></script>
+		<!-- script for more button on the top -->
+		<script src="src/home/js/morebutton.js"></script>
+    </body>
+</html>

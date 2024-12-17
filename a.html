@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A* Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <link rel="icon" href="./src/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="no-scroll-preload">
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+<div class="AStar" style="margin-left: 20px;">
+    <br><br>
+    <h1>A* (A-Star) Search Algorithm</h1>
+    <p>
+        A* is a popular pathfinding and graph traversal algorithm. It aims to find the shortest path between a starting point and a target point, using a heuristic to estimate the cost to reach the goal.
+    </p>
+
+    <b><h4>Key Characteristics of A*:</h4></b>
+    <pre>
+    1. A* uses a *priority queue* to explore nodes based on cost.
+    2. It combines the path cost (g) with a heuristic (h) to decide the next node to explore.
+    3. A* guarantees the shortest path if the heuristic is admissible.
+    </pre>
+
+    <b><h4>Applications of A*:</h4></b>
+    <pre>
+    - Pathfinding in games (e.g., NPC movement).
+    - Robotics navigation.
+    - Network routing protocols.
+    - Puzzle solving (like the sliding tile puzzle).
+    </pre>
+
+    <div class="box1">
+        <div class="Process">
+            <h1>How A* Works?</h1>
+            <p>A* explores nodes based on the total estimated cost \(f(n) = g(n) + h(n)\), where:</p>
+            <ul>
+                <li><b>g(n):</b> Cost from the start node to the current node.</li>
+                <li><b>h(n):</b> Heuristic estimate of the cost from the current node to the goal.</li>
+            </ul>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Astar_progress_animation.gif" 
+                 alt="A* Example" style="max-width: 100%; height: auto;">
+            <p>The algorithm prioritizes nodes that appear to be on the shortest path to the goal based on this combined cost.</p>
+
+            <button style="background-color: blue;" class="button1" onclick="location.href='Path finding/pathfinding.html'">Try It!</button>
+        </div>
+
+        <div class="code">
+            <h1>A* Implementation in C</h1>
+            <pre class="prettyprint notranslate prettyprinted">
+#include < stdio.h >
+#include < stdlib.h >
+#include < math.h >
+
+#define MAX 100
+#define INF 9999
+
+typedef struct {
+    int x, y;
+} Node;
+
+int heuristic(Node a, Node b) {
+    return abs(a.x - b.x) + abs(a.y - b.y);  // Manhattan Distance
+}
+
+int findMin(int fScore[], int openSet[], int n) {
+    int min = INF, minIndex = -1;
+    for (int i = 0; i < n; i++) {
+        if (openSet[i] && fScore[i] < min) {
+            min = fScore[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
+
+void aStar(Node graph[], int n, Node start, Node goal) {
+    int gScore[MAX], fScore[MAX], openSet[MAX] = {0}, closedSet[MAX] = {0};
+    
+    for (int i = 0; i < n; i++) {
+        gScore[i] = fScore[i] = INF;
+    }
+
+    gScore[start.x] = 0;
+    fScore[start.x] = heuristic(start, goal);
+    openSet[start.x] = 1;
+
+    while (1) {
+        int current = findMin(fScore, openSet, n);
+        if (current == -1 || current == goal.x) break;
+        
+        openSet[current] = 0;
+        closedSet[current] = 1;
+
+        for (int i = 0; i < n; i++) {
+            if (graph[current].x != i || closedSet[i]) continue;
+            
+            int tempG = gScore[current] + 1;
+            if (tempG < gScore[i]) {
+                gScore[i] = tempG;
+                fScore[i] = gScore[i] + heuristic(graph[i], goal);
+                openSet[i] = 1;
+            }
+        }
+    }
+
+    printf("A* Path: ");
+    for (int i = 0; i < n; i++) {
+        if (closedSet[i]) printf("%d ", i);
+    }
+    printf("\n");
+}
+
+int main() {
+    Node graph[MAX];
+    for (int i = 0; i < 6; i++) {
+        graph[i].x = i;
+        graph[i].y = 0;
+    }
+    Node start = {0, 0}, goal = {5, 0};
+    aStar(graph, 6, start, goal);
+    return 0;
+}
+            </pre>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="main-content">
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                through interactive quizzes and engaging learning tools.<br>
+                At DATAVISIQ, we combine education with gamification to 
+                help you master foundational concepts.Our interactive quizzes
+                are crafted to challenge your understanding, reinforce key ideas,
+                and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <center>
+            <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+        </center>
+    </div>
+</footer>
+
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+</body>
+</html>

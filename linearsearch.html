@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- <title>Document</title> -->
+        <title>Linear Search</title>
+        <link
+	      rel="stylesheet"
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	      crossorigin="anonymous"
+	    />
+       <style>
+       
+         .button1 {
+            padding: 25px 42px;
+            font-size: 16px;
+           text-align: center;
+  background-color: #29b8ec;} 
+         /* .button2 {background-color: #008CBA;} Blue */
+         </style>
+	    <link
+	      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	      rel="stylesheet"
+	    />
+        <link rel="stylesheet" href="src/home/css/style.css" />
+        <link rel="stylesheet" href="src/home/css/morebutton.css" />
+        <link rel="stylesheet" href="src\seive_Of_Eratosthenes\style.css" />
+        <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+        <!-- Page icon -->
+        <link rel="icon" href="./src/assets/logo.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ 
+    </head>
+<body>
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+
+
+      <div class="algo">
+         <br>
+         <br>
+    <h1>Linear Search </h1>
+     <p>Linear search is a very simple search algorithm. In this type of search, a sequential search is made over all items one by one. Every item is checked and if a match is found then that particular item is returned, otherwise the search continues till the end of the data collection.</p>
+     <br>
+     <br>
+     <div class="box1">
+      <div class="Process">
+         <h1>How Linear Search works</h1>
+          
+          <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/linear_search.gif" alt="Linear search Animation">
+          
+        <div class ="algorithm">
+        <h3>Algorithm</h3>
+       <b>Step 1 −</b>Set i to 1<br>
+    <b>Step 2 −</b> if i > n then go to step 7<br>
+    <b>Step 3 −</b>  if A[i] = x then go to step 6 <br>
+    <b>Step 4 − </b>Set i to i + 1<br>
+    <b>Step 5 − </b> Go to Step 2 <br>
+    <b>Step 6 −</b> Print Element x Found at index i and go to step 8 <br>
+    <b>Step 7 − </b>Print element not found <br>
+    <b>Step 8 −</b> Exit <br>
+    </p>
+    
+    <button style="background-color: blue;" class="button1" onclick="location.href='search.html'">Try It!</button>
+            
+
+        </div>
+    
+    
+    
+        </div>
+
+        <div class = "code">  
+            <pre class="prettyprint notranslate prettyprinted" style=""><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;stdio.h&gt;</span><span class="pln">
+
+            </span><span class="com">#define</span><span class="pln"> MAX </span><span class="lit">20</span><span class="pln">
+            
+            </span><span class="com">// array of items on which linear search will be conducted.</span><span class="pln">
+            </span><span class="kwd">int</span><span class="pln"> intArray</span><span class="pun">[</span><span class="pln">MAX</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">4</span><span class="pun">,</span><span class="lit">6</span><span class="pun">,</span><span class="lit">7</span><span class="pun">,</span><span class="lit">9</span><span class="pun">,</span><span class="lit">11</span><span class="pun">,</span><span class="lit">12</span><span class="pun">,</span><span class="lit">14</span><span class="pun">,</span><span class="lit">15</span><span class="pun">,</span><span class="lit">16</span><span class="pun">,</span><span class="lit">17</span><span class="pun">,</span><span class="lit">19</span><span class="pun">,</span><span class="lit">33</span><span class="pun">,</span><span class="lit">34</span><span class="pun">,</span><span class="lit">43</span><span class="pun">,</span><span class="lit">45</span><span class="pun">,</span><span class="lit">55</span><span class="pun">,</span><span class="lit">66</span><span class="pun">};</span><span class="pln">
+            
+            </span><span class="kwd">void</span><span class="pln"> printline</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> count</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+               </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">;</span><span class="pln">
+                
+               </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">i </span><span class="pun">&lt;</span><span class="pln">count</span><span class="pun">-</span><span class="lit">1</span><span class="pun">;</span><span class="pln">i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                  printf</span><span class="pun">(</span><span class="str">"="</span><span class="pun">);</span><span class="pln">
+               </span><span class="pun">}</span><span class="pln">
+                
+               printf</span><span class="pun">(</span><span class="str">"=\n"</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+            
+            </span><span class="com">// this method makes a linear search. </span><span class="pln">
+            </span><span class="kwd">int</span><span class="pln"> find</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            
+               </span><span class="kwd">int</span><span class="pln"> comparisons </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+               </span><span class="kwd">int</span><span class="pln"> index </span><span class="pun">=</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+               </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">;</span><span class="pln">
+            
+               </span><span class="com">// navigate through all items </span><span class="pln">
+               </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">i</span><span class="pun">&lt;</span><span class="pln">MAX</span><span class="pun">;</span><span class="pln">i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                
+                  </span><span class="com">// count the comparisons made </span><span class="pln">
+                  comparisons</span><span class="pun">++;</span><span class="pln">
+                    
+                  </span><span class="com">// if data found, break the loop</span><span class="pln">
+                  </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">data </span><span class="pun">==</span><span class="pln"> intArray</span><span class="pun">[</span><span class="pln">i</span><span class="pun">])</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                     index </span><span class="pun">=</span><span class="pln"> i</span><span class="pun">;</span><span class="pln">
+                     </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+                  </span><span class="pun">}</span><span class="pln">
+               </span><span class="pun">}</span><span class="pln">   
+                
+               printf</span><span class="pun">(</span><span class="str">"Total comparisons made: %d"</span><span class="pun">,</span><span class="pln"> comparisons</span><span class="pun">);</span><span class="pln">
+               </span><span class="kwd">return</span><span class="pln"> index</span><span class="pun">;</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+            
+            </span><span class="kwd">void</span><span class="pln"> display</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+               </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">;</span><span class="pln">
+               printf</span><span class="pun">(</span><span class="str">"["</span><span class="pun">);</span><span class="pln">
+                
+               </span><span class="com">// navigate through all items </span><span class="pln">
+               </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">i</span><span class="pun">&lt;</span><span class="pln">MAX</span><span class="pun">;</span><span class="pln">i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                  printf</span><span class="pun">(</span><span class="str">"%d "</span><span class="pun">,</span><span class="pln">intArray</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]);</span><span class="pln">
+               </span><span class="pun">}</span><span class="pln">
+                
+               printf</span><span class="pun">(</span><span class="str">"]\n"</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+            
+            </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+               printf</span><span class="pun">(</span><span class="str">"Input Array: "</span><span class="pun">);</span><span class="pln">
+               display</span><span class="pun">();</span><span class="pln">
+               printline</span><span class="pun">(</span><span class="lit">50</span><span class="pun">);</span><span class="pln">
+                
+               </span><span class="com">//find location of 1</span><span class="pln">
+               </span><span class="kwd">int</span><span class="pln"> location </span><span class="pun">=</span><span class="pln"> find</span><span class="pun">(</span><span class="lit">55</span><span class="pun">);</span><span class="pln">
+            
+               </span><span class="com">// if element was found </span><span class="pln">
+               </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">location </span><span class="pun">!=</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+                  printf</span><span class="pun">(</span><span class="str">"\nElement found at location: %d"</span><span class="pln"> </span><span class="pun">,(</span><span class="pln">location</span><span class="pun">+</span><span class="lit">1</span><span class="pun">));</span><span class="pln">
+               </span><span class="kwd">else</span><span class="pln">
+                  printf</span><span class="pun">(</span><span class="str">"Element not found."</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">}</span></pre>
+    </div>
+
+    
+                 
+</div>
+
+<p style=" margin-left: 50%;"> If we compile and run the above program, it will produce the following result −</p>
+<h2 style=" margin-left: 50%;">Output</h2>
+<div class="output">
+    <pre class="result notranslate">Input Array: [1 2 3 4 6 7 9 11 12 14 15 16 17 19 33 34 43 45 55 66 ]
+        ==================================================
+        Total comparisons made: 19
+        Element found at location: 19
+        </pre>
+
+
+   </div>
+        </div>
+    
+
+    
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+<!-- Footer -->
+<footer>
+    <div class="main-content">
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                through interactive quizzes and engaging learning tools.<br>
+                At DATAVISIQ, we combine education with gamification to 
+                help you master foundational concepts.Our interactive quizzes
+                are crafted to challenge your understanding, reinforce key ideas,
+                and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <center>
+            <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+        </center>
+    </div>
+</footer>
+</body>
+</html>

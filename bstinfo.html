@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search Tree</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="icon" href="./src/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="no-scroll-preload">
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+<div class="BST" style="margin-left: 20px;"
+>
+    <br><br>
+    <h1>Binary Search Tree (BST)</h1>
+    <p>
+        A Binary Search Tree (BST) is a data structure that stores elements in a sorted way to allow fast lookup, 
+        insertion, and deletion. Each node follows the rule:
+    </p>
+
+    <pre>
+    1. The left subtree of a node contains only nodes with keys less than the node's key.
+    2. The right subtree contains only nodes with keys greater than the node's key.
+    3. Both the left and right subtrees must also be binary search trees.
+    </pre>
+
+    <b><h4>Applications of Binary Search Tree:</h4></b>
+    <pre>
+    - Implementing search trees in databases.
+    - Creating associative arrays or sets.
+    - Efficient search, insertion, and deletion operations.
+    - Used in expression parsing.
+    </pre>
+
+    <div class="box1">
+        <div class="Process">
+            <h1>How BST Works?</h1>
+            <p>A BST works by recursively dividing the elements. When searching for a value, the algorithm compares 
+                the value to the root and decides whether to move left or right.</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Binary_search_tree.svg" 
+                 alt="Binary Search Tree Example" style="max-width: 100%; height: auto;">
+            <p>Operations like searching, insertion, and deletion take time proportional to the height of the tree.</p>
+
+            <button style="background-color: blue;" class="button1" onclick="location.href='Trees/BinaryTree/tree.html'">Try It!</button>
+        </div>
+
+        <div class="code">
+            <h1>Binary Search Tree Implementation in C</h1>
+            <pre class="prettyprint notranslate prettyprinted">
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a Node structure
+typedef struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+} Node;
+
+// Create a new node
+Node* createNode(int data) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
+// Insert a node into the BST
+Node* insert(Node* root, int data) {
+    if (root == NULL) {
+        return createNode(data);
+    }
+    if (data < root->data) {
+        root->left = insert(root->left, data);
+    } else if (data > root->data) {
+        root->right = insert(root->right, data);
+    }
+    return root;
+}
+
+// In-order traversal of the BST
+void inOrder(Node* root) {
+    if (root != NULL) {
+        inOrder(root->left);
+        printf("%d ", root->data);
+        inOrder(root->right);
+    }
+}
+
+// Main function to test the BST
+int main() {
+    Node* root = NULL;
+    root = insert(root, 50);
+    insert(root, 30);
+    insert(root, 70);
+    insert(root, 20);
+    insert(root, 40);
+    insert(root, 60);
+    insert(root, 80);
+
+    printf("In-order traversal of the Binary Search Tree:\n");
+    inOrder(root);
+
+    return 0;
+}
+            </pre>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="main-content">
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                through interactive quizzes and engaging learning tools.<br>
+                At DATAVISIQ, we combine education with gamification to 
+                help you master foundational concepts.Our interactive quizzes
+                are crafted to challenge your understanding, reinforce key ideas,
+                and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <center>
+            <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+        </center>
+    </div>
+</footer>
+
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+</body>
+</html>

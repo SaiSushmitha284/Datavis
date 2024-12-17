@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataVisIQ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="icon" href="./src/assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Add Background Image CSS -->
+    <style>
+        /* Apply background image to the main section */
+        main {
+            background-image: url('Images/bg2.png');
+            background-color: #0f7be7; /* Background color in case the image is unavailable */
+            background-size: cover; /* Ensure the background covers the entire area */
+            background-position: center; /* Center the background image */
+            background-repeat: repeat; /* Prevent repeating the image */
+            min-height: 100vh; /* Ensure the background covers the entire viewport height */
+            padding: 0px; /* Remove padding to avoid unnecessary space */
+        }
+
+        footer {
+            margin-top: 0; /* Remove any margin above the footer */
+            padding-top: 0; /* Remove any padding at the top of the footer */
+        }
+
+        /* Ensure the footer content stretches to the bottom */
+        .footer-bottom {
+            margin-top: 0;
+            padding: 10px 0; /* Control footer padding */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Adjust content and footer layout */
+        .container {
+            padding-bottom: 0; /* Remove any padding from bottom */
+        }
+
+        .loader-container, .main-content {
+            height: 100%;
+        }
+
+        h1 {
+            font-size: 4rem; /* Make the font size large */
+            color: white; /* Set font color to white */
+            font-weight: bold; /* Make the text bold */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        /* Style for card deck to ensure square cards */
+        .card-deck {
+            display: flex;
+            justify-content: space-evenly; /* Space cards evenly */
+            flex-wrap: wrap; /* Wrap cards into rows if the screen is small */
+            gap: 20px; /* Space between the cards */
+            padding: 20px; /* Optional: space around the card deck */
+        }
+
+        /* Styling for individual cards */
+        .card {
+            width: 20px; /* Set width to make cards larger */
+            height: 220px; /* Set height to make cards square */
+            display: flex;
+            align-items: center; /* Vertically center the text inside */
+            justify-content: center; /* Horizontally center the text inside */
+            background-color: #0d2540; /* Background color */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            cursor: pointer; /* Cursor changes to indicate clickability */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        }
+
+        /* Add hover effect to cards */
+        .card:hover {
+            transform: scale(1.05); /* Slightly scale the card */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+
+        /* Styling for text inside the card */
+        .card-title {
+            font-size: 2.5rem; /* Adjust font size to fit inside the card */
+            font-weight: bold; /* Bold text for emphasis */
+            text-align: center; /* Center the text horizontally */
+            color: #eae2e2; /* Darker text color for visibility */
+            padding: 50px; /* Padding for spacing */
+        }
+
+    </style>
+</head>
+
+<body class="no-scroll-preload">
+    <div class="loader-container">
+        <div class="atom">
+            <div class="electron"></div>
+            <div class="electron-alpha"></div>
+            <div class="electron-omega"></div>
+        </div>
+    </div>
+
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- <h1 class="display-5 fw-bold my-2 text-white " style="padding-top: 12% ;">Welcome to DATAVIZIQ</h1> -->
+    <main><br><br>
+        <h1 >Welcome to DATAVIZIQ</h1>
+        <br>
+        <br><br>
+        <!-- 4 Boxes for Array, Stack, Queue, Sort -->
+        <div class="card-deck">
+            <div class="card" onclick="window.location.href='bfsinfo.html';">
+                <div class="card-body">
+                    <h5 class="card-title">Breadth-First Search</h5>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='dfsinfo.html';">
+                <div class="card-body">
+                    <h5 class="card-title">Depth-First Search</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="card" onclick="window.location.href='dijinfo.html';">
+                <div class="card-body">
+                    <h5 class="card-title">Dijkstra's Algorithm</h5>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='a.html';">
+                <div class="card-body">
+                    <h5 class="card-title">A* Algorithm</h5>
+                </div>
+            </div>
+        </div>
+<br><br>
+        
+
+
+        
+    </main>
+
+    <footer>
+        <div class="main-content">
+            <div class="left box">
+                <h2>About Us</h2>
+                <div class="content">
+                    <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                    through interactive quizzes and engaging learning tools.<br>
+                    At DATAVISIQ, we combine education with gamification to 
+                    help you master foundational concepts.Our interactive quizzes
+                    are crafted to challenge your understanding, reinforce key ideas,
+                    and ensure you’re ready to tackle.
+                    </p>
+
+                    <div class="links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-medium-m"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="address box">
+                <h2>Address</h2>
+                <div class="content">
+                    <div class="place">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="text">Hyderabad,Telangana</span>
+                    </div>
+                    <div class="email">
+                        <i class="fas fa-envelope"></i>
+                        <span class="email">datavisiq.int@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right box">
+                <h2>Contact Us</h2>
+                <form action="#">
+                    <div class="email">
+                        <div class="text">Email</div>
+                        <input type="email" required>
+                    </div>
+                    <div class="msg">
+                        <div class="text">Message</div>
+                        <textarea name="" id="" cols="25" rows="2" required></textarea>
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <center>
+                <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+            </center>
+        </div>
+    </footer>
+
+    <script>
+        let loader = document.querySelector(".loader-container");
+        window.addEventListener("load", vanish);
+
+        function vanish() {
+            loader.classList.add("disappear");
+        }
+
+        $(function () {
+            $("a.nav-link").each(function () {
+                if ($(this).prop("href") == window.location.href) {
+                    $(this).addClass("current-link");
+                }
+            });
+        });
+    </script>
+
+    <script src="src/home/js/morebutton.js"></script>
+    <script src="src/home/js/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

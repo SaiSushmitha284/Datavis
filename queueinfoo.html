@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queue</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <link rel="icon" href="./src/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+<div class="Queue" style="margin-left: 20px;">
+    <br>
+    <br>
+    <h1>Queue</h1>
+    <p>A queue is a linear data structure that follows the First-In-First-Out (FIFO) principle. It behaves like a queue of people waiting in line, where the first person to join the line is the first one to be served.
+    </p><p>
+       <b><h4>Think of it this way:</h4></b> 
+        <pre>
+        Enqueuing an element is like adding a person to the end of the line.
+        Dequeuing an element removes the person from the front of the line.
+        </pre>
+        <b><h4>Key Operations on Queue Data Structures</h4></b>
+        <pre>
+        Enqueue: Adds an element to the end of the queue.
+        Dequeue: Removes the front element from the queue.
+        Peek: Returns the front element without removing it.
+        IsEmpty: Checks if the queue is empty.
+        IsFull: Checks if the queue is full (in case of fixed-size arrays).
+        </pre>
+        <b><h4>Applications of Queue Data Structures</h4></b>
+        Task Scheduling
+        Print Spooling
+        Breadth-First Search (BFS)
+        Handling Requests in Servers
+    </p>
+    <br>
+    <br>
+    <div class="box1">
+        <div class="Process">
+            <h1>How Queues Work?</h1>
+            <p>Elements can be added to and removed from the queue using two primary operations:</p>
+            <ul>
+                <li><strong>Enqueue:</strong> Adds an item to the rear of the queue.</li>
+                <li><strong>Dequeue:</strong> Removes an item from the front of the queue.</li>
+            </ul>
+            <p>Here's a simple visualization:</p>
+            <img src="https://www.tutorialspoint.com/data_structures_algorithms/images/Representation_of_queues.jpg" alt="Queue Example">
+            <p>In the example above, if we perform an enqueue operation, the new element will be added to the rear, and if we perform a dequeue operation, the element at the front will be removed.</p>
+
+            <button style="background-color: blue;" class="button1" onclick="location.href='Animations/Queue/que.html'">Try It!</button>
+              </div>
+        
+        <div class="code">
+            <h1>Implementation in C</h1>
+            <pre class="prettyprint notranslate prettyprinted" >
+#include < stdio.h >
+#include < stdlib.h >
+
+#define MAX 10
+
+struct Queue {
+    int items[MAX];
+    int front, rear;
+};
+
+// Function to create a queue
+struct Queue* createQueue() {
+    struct Queue* queue = (struct Queue*)malloc(sizeof(struct Queue));
+    queue->front = -1;
+    queue->rear = -1;
+    return queue;
+}
+
+// Function to check if the queue is full
+int isFull(struct Queue* queue) {
+    return queue->rear == MAX - 1;
+}
+
+// Function to check if the queue is empty
+int isEmpty(struct Queue* queue) {
+    return queue->front == -1;
+}
+
+// Function to add an item to the queue
+void enqueue(struct Queue* queue, int item) {
+    if (isFull(queue)) {
+        printf("Queue is full\n");
+        return;
+    }
+    if (queue->front == -1) {
+        queue->front = 0;
+    }
+    queue->items[++queue->rear] = item;
+    printf("%d enqueued to queue\n", item);
+}
+
+// Function to remove an item from the queue
+int dequeue(struct Queue* queue) {
+    if (isEmpty(queue)) {
+        printf("Queue is empty\n");
+        return -1;
+    }
+    int item = queue->items[queue->front];
+    if (queue->front == queue->rear) {
+        queue->front = queue->rear = -1;  // Reset the queue
+    } else {
+        queue->front++;
+    }
+    return item;
+}
+
+// Function to display the queue
+void display(struct Queue* queue) {
+    if (isEmpty(queue)) {
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Queue elements are: ");
+    for (int i = queue->front; i <= queue->rear; i++) {
+        printf("%d ", queue->items[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Queue* queue = createQueue();
+    enqueue(queue, 10);
+    enqueue(queue, 20);
+    enqueue(queue, 30);
+    display(queue);
+    printf("%d dequeued from queue\n", dequeue(queue));
+    display(queue);
+    return 0;
+}
+            </pre>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="main-content" >
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                   through interactive quizzes and engaging learning tools.<br>
+                   At DATAVISIQ, we combine education with gamification to 
+                   help you master foundational concepts.Our interactive quizzes
+                   are crafted to challenge your understanding, reinforce key ideas,
+                    and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <center>
+        <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+    </center>
+</div>
+</footer>
+
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+</body>
+</html>

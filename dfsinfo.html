@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DFS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/home/css/style.css" />
+    <link rel="stylesheet" href="src/home/css/morebutton.css" />
+    <link rel="stylesheet" href="src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <link rel="icon" href="./src/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="no-scroll-preload">
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="cover.html" class="link">Home</a>
+                    <a href="datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+<div class="DFS" style="margin-left: 20px;">
+    <br><br>
+    <h1>Depth-First Search (DFS)</h1>
+    <p>
+        Depth-First Search (DFS) is an algorithm for traversing or searching through tree or graph data structures. 
+        It starts at a selected node and explores as far as possible along each branch before backtracking.
+    </p>
+
+    <b><h4>Key Characteristics of DFS:</h4></b>
+    <pre>
+    1. DFS uses a *stack* data structure (can also be implemented recursively).
+    2. It explores nodes deeply along one path before backtracking to explore other paths.
+    3. DFS may not always find the shortest path but explores paths thoroughly.
+    </pre>
+
+    <b><h4>Applications of DFS:</h4></b>
+    <pre>
+    - Solving mazes or puzzles.
+    - Detecting cycles in a graph.
+    - Topological sorting in a directed graph.
+    - Finding connected components in a graph.
+    - Pathfinding in AI.
+    </pre>
+
+    <div class="box1">
+        <div class="Process">
+            <h1>How DFS Works?</h1>
+            <p>DFS uses a stack (or recursion) to explore each vertex deeply. Here's a basic visualization:</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif" alt="DFS Example" style="max-width: 100%; height: auto;">
+            <p>In the example above, the algorithm explores nodes depth-wise, following one path to its end before backtracking.</p>
+
+            <button style="background-color: blue;" class="button1" onclick="location.href='Path finding/pathfinding.html'">Try It!</button>
+        </div>
+
+        <div class="code">
+            <h1>DFS Implementation in C</h1>
+            <pre class="prettyprint notranslate prettyprinted">
+#include < stdio.h >
+#include < stdlib.h >
+
+#define MAX 100
+
+// Graph structure using an adjacency matrix
+int adj[MAX][MAX];
+int visited[MAX];
+
+// Function to add an edge to the graph
+void addEdge(int u, int v) {
+    adj[u][v] = 1;
+    adj[v][u] = 1;  // For an undirected graph
+}
+
+// DFS traversal (recursive)
+void dfs(int node, int vertices) {
+    visited[node] = 1;
+    printf("%d ", node);
+
+    for (int i = 0; i < vertices; i++) {
+        if (adj[node][i] && !visited[i]) {
+            dfs(i, vertices);
+        }
+    }
+}
+
+int main() {
+    int vertices = 6;
+
+    // Initialize the adjacency matrix and visited array
+    for (int i = 0; i < vertices; i++) {
+        for (int j = 0; j < vertices; j++) {
+            adj[i][j] = 0;
+        }
+        visited[i] = 0;
+    }
+
+    // Adding edges
+    addEdge(0, 1);
+    addEdge(0, 2);
+    addEdge(1, 3);
+    addEdge(2, 4);
+    addEdge(3, 5);
+
+    printf("DFS Traversal: ");
+    dfs(0, vertices);
+    return 0;
+}
+            </pre>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="main-content">
+        <div class="left box">
+            <h2>About Us</h2>
+            <div class="content">
+                <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                through interactive quizzes and engaging learning tools.<br>
+                At DATAVISIQ, we combine education with gamification to 
+                help you master foundational concepts.Our interactive quizzes
+                are crafted to challenge your understanding, reinforce key ideas,
+                and ensure you’re ready to tackle.
+                </p>
+
+                <div class="links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-medium-m"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="address box">
+            <h2>Address</h2>
+            <div class="content">
+                <div class="place">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="text">Hyderabad,Telangana</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">datavisiq.int@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="right box">
+            <h2>Contact Us</h2>
+            <form action="#">
+                <div class="email">
+                    <div class="text">Email</div>
+                    <input type="email" required>
+                </div>
+                <div class="msg">
+                    <div class="text">Message</div>
+                    <textarea name="" id="" cols="25" rows="2" required></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <center>
+            <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+        </center>
+    </div>
+</footer>
+
+<script src="src/home/js/morebutton.js"></script>
+<script src="src/home/js/script.js"></script>
+</body>
+</html>
