@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="Queue.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../../src/home/css/style.css" />
+        <link rel="stylesheet" href="../../src/home/css/morebutton.css" />
+        <link rel="stylesheet" href="../../src/home/css/style.css" />
+        <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <title>Queue</title>
+    </head>
+<body>
 
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="../../src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="../../cover.html" class="link">Home</a>
+                    <a href="../../datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+<div id="EnqueueContainer">
+    <input class="Buttons" type="text" id="enqueueValue" placeholder="Enter a value" />
+    <br>
+    <input class="Buttons" type="submit" value="Enqueue" onclick="Enqueue()">
+</div>
+
+<div id="DequeueContainer">
+    <input class="Buttons" type="submit" value="Dequeue" onclick="Dequeue()">
+</div>
+
+<div id="error">
+    Queue simulation
+</div>
+
+<script>
+
+    var data = [];
+    var maxLength = 14;
+    var width = 2000;
+    var height = 1200;
+
+    var svgContainer = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var rectanglesGroup = svgContainer.append("g")
+        .attr("class", "SvgGroup")
+        .attr("transform", "translate(50,100)");
+
+    color = d3.scaleLinear()
+        .domain([0, 100])
+        .interpolate(d3.interpolateHcl)
+        .range([d3.rgb("#0000FF"), d3.rgb('#FFFF00')]);
+
+    var rect_height = 100;
+    var rect_width = 100;
+
+    function Dequeue() {
+        document.getElementById("error").innerText = "Queue simulation";
+
+        if (data.length == 0)
+            return;
+        data.pop();
+        Remove(data);
+    }
+
+    function Enqueue() {
+        var inputValue = document.getElementById("enqueueValue").value;
+
+        if (data.length >= maxLength) {
+            document.getElementById("error").innerText = "QUEUE OVERFLOW!";
+            return;
+        }
+
+        // Check if input value is valid
+        if (!inputValue || isNaN(inputValue)) {
+            document.getElementById("error").innerText = "Enter a valid number!";
+            return;
+        }
+
+        var toAdd = parseInt(inputValue);  // Convert input value to an integer
+        data.unshift(toAdd);  // Add the value to the front of the queue
+        document.getElementById("enqueueValue").value = "";  // Clear the input box
+        Visualize(data);
+    }
+
+    function Remove(data) {
+        var group = d3.select("g");
+
+        if (data.length === 0) {
+            group.selectAll(".indexText")
+                .data(data)
+                .exit()
+                .remove();
+
+            group.selectAll(".dataText")
+                .data(data)
+                .exit()
+                .remove();
+
+            group.selectAll("rect")
+                .data(data)
+                .exit()
+                .remove();
+        } else {
+            var removeTime = 500;
+            var xOffset = 1500;
+
+            svgContainer.select("g").selectAll("rect")
+                .filter(function (d, i) {
+                    return i === (data.length);
+                })
+                .transition()
+                .duration(removeTime)
+                .attr("x", xOffset)
+                .attr("y", 0);
+
+            svgContainer.select("g").selectAll(".indexText")
+                .filter(function (d, i) {
+                    return i === (data.length);
+                })
+                .transition()
+                .duration(removeTime)
+                .attr("x", xOffset + 25)
+                .attr("y", 160);
+
+            svgContainer.select("g").selectAll(".dataText")
+                .filter(function (d, i) {
+                    return i === (data.length);
+                })
+                .transition()
+                .duration(removeTime)
+                .attr("x", xOffset + 25)
+                .attr("y", 50);
+
+            setTimeout(function () {
+                group.selectAll(".indexText")
+                    .data(data)
+                    .exit()
+                    .remove();
+
+                group.selectAll(".dataText")
+                    .data(data)
+                    .exit()
+                    .remove();
+
+                group.selectAll("rect")
+                    .data(data)
+                    .exit()
+                    .remove();
+            }, removeTime);
+        }
+    }
+
+    function Visualize(data) {
+        var Y_value = 100;
+        var group = d3.select("g");
+
+        Remove([]);
+
+        group.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("class", "dataRect")
+            .attr("width", rect_width)
+            .attr("height", rect_height)
+            .attr("x", function (d, i) {
+                return i * (rect_height + 10);
+            })
+            .attr("y", function (d, i) {
+                return i === 0 ? -50 : Y_value;
+            })
+            .style("fill", function (d) {
+                return color(d);
+            })
+            .transition().duration(500)
+            .attr("x", function (d, i) {
+                return i * (rect_height + 10);
+            })
+            .attr("y", Y_value);
+
+        group.selectAll(".dataText")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "dataText")
+            .text(function (d) {
+                return d;
+            })
+            .attr("x", function (d, i) {
+                return i * (rect_height + 10) + 33;
+            })
+            .attr("y", function (d, i) {
+                return i === 0 ? 60 - 50 : Y_value + 60;
+            })
+            .attr("fill", "Black")
+            .attr("font-size", "30px")
+            .transition().duration(500)
+            .attr("x", function (d, i) {
+                return i * (rect_height + 10) + 33;
+            })
+            .attr("y", Y_value + 60);
+
+        group.selectAll(".indexText")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "indexText")
+            .text(function (d, i) {
+                return i;
+            })
+            .attr("x", function (d, i) {
+                return i * (rect_height + 10) + 40;
+            })
+            .attr("y", Y_value + 150)
+            .attr("fill", "Black")
+            .attr("font-size", "30px")
+            .transition().duration(500)
+            .attr("x", function (d, i) {
+                return i * (rect_height + 10) + 40;
+            })
+            .attr("y", Y_value + 150);
+    }
+
+</script>
+
+</body>
+</html>
