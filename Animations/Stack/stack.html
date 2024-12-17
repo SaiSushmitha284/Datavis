@@ -1,1 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="Stack_animation.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../../src/home/css/style.css" />
+        <link rel="stylesheet" href="../../src/home/css/morebutton.css" />
+        <link rel="stylesheet" href="../../src/home/css/style.css" />
+        <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <title>Stack</title>
+    </head>
+    <body>
 
+        <header>
+            <div id="header-inner">
+                <a href="#" id="logo"></a>
+                <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                    <img src="../../src/assets/datavisiq.png" class="main-logo">
+                    <span class="name">DataVisIQ</span>
+                </a>
+                <div class="container1 blue" id="navbarNav">
+                    <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+                    <ul class="heck" id="heck">
+                        <a href="../../cover.html" class="link">Home</a>
+                        <a href="../../datastructure.html" class="link">Data Structures</a>
+                        <a href="quiz.html" class="link">Quiz</a>
+                        <a href="#section1" class="link">About Us</a>
+                        <div class="dropdown">
+                            <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                            <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    
+        <main>
+            <div id="PushContainer">
+                <input class="Buttons" type="text" id="pushValue" placeholder="Enter a value" />
+                <br>
+                <input class="Buttons" type="submit" value="Push" onclick="Push()">
+            </div>
+    
+            <div id="PopContainer">
+                <input class="Buttons" type="submit" value="Pop" onclick="Pop()">
+            </div>
+    
+            <div id="error">
+                Stack simulation
+            </div>
+        </main>
+    
+        
+
+
+</body>
+
+<script>
+
+    var data = [];
+    var maxLength = 14;
+    var width = 1500;
+    var height = 1200;
+    var padding = 20;
+
+    var svgContainer = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var rectanglesGroup = svgContainer.append("g")
+        .attr("transform", "translate(50,100)");
+
+    color = d3.scaleLinear()
+        .domain([0, 100])
+        .interpolate(d3.interpolateHcl)
+        .range([d3.rgb("#0000FF"), d3.rgb('#FFFF00')]);
+
+    var rect_height = 100;
+    var rect_width = 100;
+
+    function Pop() {
+        document.getElementById("error").innerText = "Stack simulation";
+
+        if (data.length == 0)
+            return;
+        data.pop();
+        Remove();
+    }
+
+    function Push() {
+        var inputValue = document.getElementById("pushValue").value;
+
+        if (data.length >= maxLength) {
+            document.getElementById("error").innerText = "STACK OVERFLOW!";
+            return;
+        }
+
+        // Check if input value is valid
+        if (!inputValue || isNaN(inputValue)) {
+            document.getElementById("error").innerText = "Enter a valid number!";
+            return;
+        }
+
+        var toAdd = parseInt(inputValue);  // Convert input value to an integer
+        data.push(toAdd);
+        document.getElementById("pushValue").value = "";  // Clear the input box
+        Visualize(data);
+    }
+
+    function Remove() {
+        var removeTime = 500;
+        var xOffset = 1500;
+
+        svgContainer.select("g").selectAll("rect")
+            .filter(function (d, i) {
+                return i === (data.length);
+            })
+            .transition()
+            .duration(removeTime)
+            .attr("x", xOffset)
+            .attr("y", 0);
+
+        svgContainer.select("g").selectAll("text")
+            .filter(function (d, i) {
+                return i === (data.length);
+            })
+            .transition()
+            .duration(removeTime)
+            .attr("x", xOffset + 25)
+            .attr("y", 50);
+
+        setTimeout(function () {
+            var rects = svgContainer.select("g").selectAll("rect")
+                .data(data);
+            rects.exit().remove();
+
+            var texts = svgContainer.select("g").selectAll("text");
+            texts
+                .data(data)
+                .exit()
+                .remove();
+        }, removeTime);
+
+    }
+
+    function Visualize() {
+
+        var rectangles = rectanglesGroup.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("class", "dataRect");
+
+        var rectanglesAttributes = rectangles.
+        transition()
+            .duration(500)
+            .attr("x", function (d, i) {
+                return i * rect_width;
+            })
+            .attr("y", 0)
+            .attr("width", function () {
+                return rect_width - padding;
+            })
+            .attr("height", function () {
+                return rect_height - padding;
+            })
+            .attr("id", function (d, i) {
+                return "rect" + i;
+            })
+            .style("fill", function (d) {
+                return color(d);
+            });
+
+        var text = rectanglesGroup.selectAll("text")
+            .data(data)
+            .enter()
+            .append("text");
+
+        var textAttr = text
+            .transition()
+            .duration(500)
+            .text(function (d) {
+                return d;
+            })
+            .attr("x", function (d, i) {
+                return i * rect_width + 10;
+            })
+            .attr("y", 50)
+            .attr("fill", "Black")
+            .attr("font-size", "30px");
+
+    }
+
+</script>
+
+</html>

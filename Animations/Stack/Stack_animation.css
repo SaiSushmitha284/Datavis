@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../../Images/canvas.png");
+    
+}
+
+.Buttons
+{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    min-width: 100px;
+    margin-top: 25px;
+    margin-left: 50px;
+
+}
+
+.Buttons:hover
+{
+    background-color: rgb(229, 235, 81);
+}
+
+#error
+{
+    margin-top: 25px;
+    font-size: 50px;
+    margin-bottom: 25px;
+    color: red;
+    margin-left: 50px;
+}
+.dataRect
+{
+    stroke-width: 3px;
+    stroke:black;
+}
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 30px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ffd700;
+}
