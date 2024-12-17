@@ -1,0 +1,107 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F9F9F9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  .nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0 15px;
+    padding: 0;
+  }
+  
+  .nav li {
+    margin: 0 20px;
+  }
+  
+  .nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+    margin-right: 20px; /* Add this line */
+  }
+  
+  .nav a:hover {
+    color: #666;
+  }
+  
+  
+  /* Add CSS reset styles */
+  html, body, h1, h2, h3, h4, h5, h6, p, button {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font-weight: normal;
+      box-sizing: border-box;
+    }
+    
+    /* Use CSS vendor prefixes */
+    body {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      /* -webkit-align-items: center; */
+      -ms-flex-align: center;
+      /* align-items: center; */
+      background: -webkit-linear-gradient(to bottom, lightblue, white);
+      background: linear-gradient(to bottom, lightblue, white);
+      height: 100vh;
+    }
+    
+    .button-container {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+    
+    button {
+      padding: 20px 40px;
+      font-size: 36px;
+      border-radius: 5px;
+      background-color: lightblue;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    
+
+    .array {
+      height: 100px;
+      width: 100px;
+      background-color: white;
+      border-style: solid;
+      border-color: black;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+   
+    
+    #arrow{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  
+    }
+
+.binary_Button{
+  background-color: red;
+}

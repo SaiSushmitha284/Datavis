@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Datastructures</title>
+    <link rel="stylesheet" href="data.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/home/css/style.css" />
+    <link rel="stylesheet" href="../src/home/css/morebutton.css" />
+    <link rel="stylesheet" href="../src/seive_Of_Eratosthenes/style.css" />
+    <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+    <!-- <link rel="icon" href="./src/assets/logo.png"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+</head>
+<body>
+
+
+    <header>
+        <div id="header-inner">
+            <a href="#" id="logo"></a>
+            <a class="navbar-brand1" rel="home" href="#" title="Structure">
+                <img src="../src/assets/datavisiq.png" class="main-logo">
+                <span class="name">DataVisIQ</span>
+            </a>
+            <div class="container1 blue" id="navbarNav">
+                <i class="fas fa-2x fa-bars" style="color:rgb(237, 230, 230);display: none;" onclick="display();"></i>
+                <ul class="heck" id="heck">
+                    <a href="../cover.html" class="link">Home</a>
+                    <a href="../datastructure.html" class="link">Data Structures</a>
+                    <a href="quiz.html" class="link">Quiz</a>
+                    <a href="#section1" class="link">About Us</a>
+                    <div class="dropdown">
+                        <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                        <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div style="margin-left: 100px;">
+
+    <div id="ball_input">
+        <label for="array" style="font-size: 32px;">Enter <select name="structures" id="structure" style="font-size: 32px;">
+            <option value="array" style="font-size: 32px;">array</option>
+            <option value="linked" style="font-size: 32px;" >linked list</option> 
+
+          </select>&nbsp;:&nbsp;</label>
+        <input id="array" value = "10,20,30,40,50" style="font-size: 32px;">
+
+        <div id="label_container" style="display: inline-block;"></div>
+        <button id="starter">start</button>        
+        <button id="clear">Clear</button>        
+    </div>
+    <br><br><br><br><br>
+    <p style="font-size: 28px;">For Array Representation : Separate numbers with comma(,)</p>
+    <br>
+    <p style="font-size: 28px;">For LinkedList Representation : Separate numbers with arrow(->)</p>
+    <br><br>
+    <br><br>
+    <br><br>
+    <ul class="box"></ul>
+    </div>
+
+
+
+    <footer>
+        <div class="main-content" >
+            <div class="left box">
+                <h2>About Us</h2>
+                <div class="content">
+                    <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                       through interactive quizzes and engaging learning tools.<br>
+                       At DATAVISIQ, we combine education with gamification to 
+                       help you master foundational concepts.Our interactive quizzes
+                       are crafted to challenge your understanding, reinforce key ideas,
+                        and ensure you’re ready to tackle.
+                    </p>
+    
+                    <div class="links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-medium-m"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="address box">
+                <h2>Address</h2>
+                <div class="content">
+                    <div class="place">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="text">Hyderabad,Telangana</span>
+                    </div>
+                    <div class="email">
+                        <i class="fas fa-envelope"></i>
+                        <span class="email">datavisiq.int@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right box">
+                <h2>Contact Us</h2>
+                <form action="#">
+                    <div class="email">
+                        <div class="text">Email</div>
+                        <input type="email" required>
+                    </div>
+                    <div class="msg">
+                        <div class="text">Message</div>
+                        <textarea name="" id="" cols="25" rows="2" required></textarea>
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <center>
+            <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+        </center>
+    </div>
+    </footer>
+
+
+    <script src="visual_data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js"></script>
+
+</body>
+</html>
