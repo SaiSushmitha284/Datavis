@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="Queue.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="../../src/home/css/style.css" />
+      <link rel="stylesheet" href="../../src/home/css/morebutton.css" />
+      <link rel="stylesheet" href="../../src/home/css/style.css" />
+      <script src="https://use.fontawesome.com/7ade57373d.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      
+    <link rel="stylesheet" href="style.css"></link>
+    <title>Binary Tree Visualization</title>
+  </head>
+  <body>
+
+    <header>
+      <div id="header-inner">
+          <a href="#" id="logo"></a>
+          <a class="navbar-brand1" rel="home" href="#" title="Structure">
+              <img src="../../src/assets/datavisiq.png" class="main-logo">
+              <span class="name">DataVisIQ</span>
+          </a>
+          <div class="container1 blue" id="navbarNav">
+              <i class="fas fa-2x fa-bars" style="color:white;display: none;" onclick="display();"></i>
+              <ul class="heck" id="heck">
+                  <a href="../../cover.html" class="link">Home</a>
+                  <a href="../../datastructure.html" class="link">Data Structures</a>
+                  <a href="quiz.html" class="link">Quiz</a>
+                  <a href="#section1" class="link">About Us</a>
+                  <div class="dropdown">
+                      <button onclick="show_hide()" class="Morebutton">LOGIN</button>
+                      <button onclick="show_hide()" class="Morebutton">SIGN IN</button>
+                  </div>
+              </ul>
+          </div>
+      </div>
+  </header>
+
+
+
+    <header>
+      
+      <!-- <div id="title">Tree Visualizer</div> -->
+      <label>Array:</label><br />
+      <input type="text" id="array-input" name="array" />
+      <div id="options">
+        <button onclick="treeAndArray()">Binary Tree Visualization</button>
+        <button onclick="heapify()">Max-Heap Visualization</button>
+        <button onclick="createBinarySearchTree()">Binary Search Tree Visualization</button>
+      </div>
+    </header>
+
+    <!-- <img src="Logo.jpg" width="200" height="150"> -->
+    <div id="blurb">
+      <div id="visual-title"></div>
+      <div id="instructions"></div>
+    </div>
+    <div id="binary-tree"></div>
+    <div id="array-visual"></div>
+
+
+    <footer>
+      <div class="main-content">
+          <div class="left box">
+              <h2>About Us</h2>
+              <div class="content">
+                  <p>Welcome to DATAVISIQ, your go-to platform for mastering data structures
+                  through interactive quizzes and engaging learning tools.<br>
+                  At DATAVISIQ, we combine education with gamification to 
+                  help you master foundational concepts.Our interactive quizzes
+                  are crafted to challenge your understanding, reinforce key ideas,
+                  and ensure you’re ready to tackle.
+                  </p>
+
+                  <div class="links">
+                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#"><i class="fab fa-github"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-medium-m"></i></a>
+                  </div>
+              </div>
+          </div>
+          <div class="address box">
+              <h2>Address</h2>
+              <div class="content">
+                  <div class="place">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span class="text">Hyderabad,Telangana</span>
+                  </div>
+                  <div class="email">
+                      <i class="fas fa-envelope"></i>
+                      <span class="email">datavisiq.int@gmail.com</span>
+                  </div>
+              </div>
+          </div>
+          <div class="right box">
+              <h2>Contact Us</h2>
+              <form action="#">
+                  <div class="email">
+                      <div class="text">Email</div>
+                      <input type="email" required>
+                  </div>
+                  <div class="msg">
+                      <div class="text">Message</div>
+                      <textarea name="" id="" cols="25" rows="2" required></textarea>
+                  </div>
+                  <div class="btn">
+                      <button type="submit">Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <center>
+              <h4 class="credits">&copy; DataVisIQ. All Rights Reserved.</h4>
+          </center>
+      </div>
+  </footer>
+
+
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="nodes.js"></script>
+    <script src="heap.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
